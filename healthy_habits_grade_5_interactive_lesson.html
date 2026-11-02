@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 5 - English | Healthy Habits for Healthy Kids!</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-sky: #e0f2fe;
+            --card-border: #bae6fd;
+            --header-dark: #0f172a;
+            --brand-blue: #0284c7;
+            --brand-blue-dark: #0369a1;
+            --nav-blue: #1d4ed8;
+            --badge-yellow: #fef08a;
+            --text-main: #0f172a;
+            --correct-bg: #dcfce7;
+            --correct-border: #16a34a;
+            --incorrect-bg: #fee2e2;
+            --incorrect-border: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: #f0f9ff;
+            color: var(--text-main);
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 520px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Top Header Card Matching Reference Image */
+        .header-card {
+            background: #ffffff;
+            border: 3px solid var(--card-border);
+            border-radius: 28px;
+            padding: 20px 16px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.08);
+            position: relative;
+        }
+
+        .school-brand {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .brand-logo-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            font-family: 'Fredoka', cursive;
+            font-weight: 700;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .school-names {
+            text-align: left;
+        }
+
+        .school-names .ar {
+            font-weight: 900;
+            color: #0284c7;
+            font-size: 15px;
+            line-height: 1.2;
+        }
+
+        .school-names .en {
+            font-size: 10px;
+            color: #0369a1;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .main-grade-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: #1e3a8a;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .badge-yellow {
+            background: var(--badge-yellow);
+            color: #0369a1;
+            font-family: 'Fredoka', cursive;
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 17px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            margin-bottom: 16px;
+        }
+
+        .prepared-box {
+            background: #f0f9ff;
+            border: 2px solid var(--card-border);
+            border-radius: 20px;
+            padding: 14px;
+        }
+
+        .prepared-box .sub {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+        }
+
+        .prepared-box .teacher-name {
+            font-size: 22px;
+            font-weight: 900;
+            color: #0284c7;
+        }
+
+        /* Student Input Section */
+        .student-card {
+            background: #ffffff;
+            border: 3px solid var(--card-border);
+            border-radius: 24px;
+            padding: 18px 20px;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.05);
+        }
+
+        .student-card label {
+            font-size: 20px;
+            font-weight: 900;
+            color: #1e3a8a;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .student-card input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #a5f3fc;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+            outline: none;
+            background: #f8fafc;
+            transition: 0.2s;
+        }
+
+        .student-card input:focus {
+            border-color: #0284c7;
+            background: #ffffff;
+        }
+
+        .student-card .caption {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* Navigation Quick Buttons */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            background: #ffffff;
+            border: 3px solid var(--card-border);
+            border-radius: 20px;
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .nav-btn.active {
+            background: #0284c7;
+            border-color: #0369a1;
+            color: white;
+            box-shadow: 0 6px 14px rgba(2, 132, 199, 0.25);
+        }
+
+        .nav-btn .title {
+            font-size: 17px;
+            font-weight: 900;
+            margin-bottom: 2px;
+        }
+
+        .nav-btn .subtitle {
+            font-size: 13px;
+            font-weight: 700;
+            opacity: 0.85;
+        }
+
+        .nav-btn:not(.active) .title {
+            color: #0284c7;
+        }
+
+        .nav-btn:not(.active) .subtitle {
+            color: #0369a1;
+        }
+
+        /* Content Section Cards */
+        .content-card {
+            background: #ffffff;
+            border: 3px solid var(--card-border);
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.06);
+        }
+
+        .section-banner {
+            background: #0284c7;
+            color: white;
+            border-radius: 18px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .banner-num {
+            background: #fef08a;
+            color: #0369a1;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .banner-title {
+            font-size: 18px;
+            font-weight: 900;
+            font-family: 'Fredoka', cursive;
+        }
+
+        /* Vocabulary Cards */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .vocab-card {
+            background: #f0f9ff;
+            border: 2px solid #bae6fd;
+            border-radius: 16px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 6px;
+        }
+
+        .vocab-en {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0369a1;
+        }
+
+        .vocab-ar {
+            font-size: 13px;
+            font-weight: 700;
+            color: #475569;
+        }
+
+        .audio-btn {
+            background: #0284c7;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 12px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            align-self: flex-start;
+            margin-top: 4px;
+        }
+
+        .audio-btn:hover {
+            background: #0369a1;
+        }
+
+        /* Reading Section */
+        .reading-block {
+            background: #f0fdf4;
+            border: 2px solid #86efac;
+            border-radius: 18px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+
+        .reading-title {
+            font-size: 17px;
+            font-weight: 900;
+            color: #15803d;
+            margin-bottom: 6px;
+        }
+
+        .reading-text {
+            font-size: 14px;
+            line-height: 1.55;
+            color: #14532d;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .warning-box {
+            background: #fee2e2;
+            border: 2px solid #fca5a5;
+            color: #991b1b;
+            padding: 12px;
+            border-radius: 16px;
+            font-weight: 800;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Questions list */
+        .q-item {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+
+        .q-title {
+            font-weight: 800;
+            font-size: 15px;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .q-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid #cbd5e1;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            outline: none;
+            margin-bottom: 8px;
+        }
+
+        .ans-btn {
+            background: #0284c7;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .model-ans {
+            display: none;
+            background: #dcfce7;
+            color: #15803d;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        /* MCQ */
+        .mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .opt-btn {
+            text-align: left;
+            padding: 10px 14px;
+            border: 2px solid #cbd5e1;
+            background: white;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .opt-btn.correct-val {
+            background: var(--correct-bg) !important;
+            border-color: var(--correct-border) !important;
+            color: #15803d !important;
+        }
+
+        .opt-btn.incorrect-val {
+            background: var(--incorrect-bg) !important;
+            border-color: var(--incorrect-border) !important;
+            color: #991b1b !important;
+        }
+
+        /* Chat Textarea */
+        .chat-box {
+            background: #fffbebf5;
+            border: 2px solid #fde68a;
+            border-radius: 18px;
+            padding: 14px;
+        }
+
+        .chat-box h4 {
+            font-size: 16px;
+            font-weight: 900;
+            color: #b45309;
+            margin-bottom: 6px;
+        }
+
+        .chat-box p {
+            font-size: 13px;
+            font-weight: 700;
+            color: #78350f;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .chat-textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 12px;
+            border: 2px solid #fcd34d;
+            font-weight: 700;
+            font-size: 14px;
+            outline: none;
+        }
+
+        /* Score Certificate */
+        .cert-card {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: white;
+            border: 4px solid #bae6fd;
+            border-radius: 24px;
+            padding: 24px 18px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.2);
+        }
+
+        .cert-card h2 {
+            font-family: 'Fredoka', cursive;
+            font-size: 26px;
+            margin-bottom: 6px;
+        }
+
+        .score-display {
+            font-size: 52px;
+            font-weight: 900;
+            color: #fef08a;
+            font-family: 'Fredoka', cursive;
+            margin: 8px 0;
+        }
+
+        .print-btn {
+            background: #f59e0b;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 14px;
+            font-weight: 900;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+
+        .print-btn:hover {
+            background: #d97706;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header Card Matching Reference Image -->
+    <div class="header-card">
+        <div class="school-brand">
+            <div class="brand-logo-box">
+                <div class="logo-icon">ب</div>
+                <div class="school-names">
+                    <div class="ar">مدارس البيارق الأهلية</div>
+                    <div class="en">AL-BAYARIQ PRIVATE SCHOOLS</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-grade-title">Grade 5 – English</div>
+        
+        <div class="badge-yellow">Reading Time - Healthy habits for healthy kids!</div>
+
+        <div class="prepared-box">
+            <div class="sub">Prepared by</div>
+            <div class="teacher-name">Mr. Mohamed Abdalla Abo Fahad</div>
+        </div>
+    </div>
+
+    <!-- Student Name Card -->
+    <div class="student-card">
+        <label for="studentName">Student Name</label>
+        <input type="text" id="studentName" placeholder="Type your name here" oninput="updateStudentName()">
+        <div class="caption">Your name will appear in the result.</div>
+    </div>
+
+    <!-- Quick Navigation Links -->
+    <div class="nav-grid">
+        <div class="nav-btn">
+            <div class="title">Kids' Health</div>
+            <div class="subtitle">Words & Quiz</div>
+        </div>
+        <div class="nav-btn active">
+            <div class="title">Healthy Habits</div>
+            <div class="subtitle">Words & Quiz</div>
+        </div>
+        <div class="nav-btn">
+            <div class="title">Let's Talk</div>
+            <div class="subtitle">Words & Quiz</div>
+        </div>
+        <div class="nav-btn">
+            <div class="title">Driving Around</div>
+            <div class="subtitle">Words & Quiz</div>
+        </div>
+    </div>
+
+    <!-- 1. Vocabulary Flashcards (6 Words) -->
+    <div class="content-card">
+        <div class="section-banner">
+            <div class="banner-num">1</div>
+            <div class="banner-title">Healthy Habits Vocabulary</div>
+        </div>
+
+        <div class="vocab-grid" id="vocabGrid"></div>
+    </div>
+
+    <!-- 2. Reading Section: Healthy habits for healthy kids! -->
+    <div class="content-card">
+        <div class="section-banner">
+            <div class="banner-num">2</div>
+            <div class="banner-title">Healthy habits for healthy kids!</div>
+        </div>
+
+        <div class="reading-block">
+            <div class="reading-title">🥦 Eat Right</div>
+            <div class="reading-text">Your body needs vitamins. Vitamins keep your body healthy! Eat lots of fruit and vegetables. Drink at least seven glasses of water every day. Don't eat a lot of desserts or drink many soft drinks.</div>
+            <button class="audio-btn" onclick="speakText(`Eat right. Your body needs vitamins. Vitamins keep your body healthy! Eat lots of fruit and vegetables. Drink at least seven glasses of water every day. Don't eat a lot of desserts or drink many soft drinks.`)">🔊 Listen</button>
+        </div>
+
+        <div class="reading-block">
+            <div class="reading-title">🏃 Exercise</div>
+            <div class="reading-text">Exercising is very important. It keeps your heart healthy and you don't get sick easily! Exercise for at least one hour every day. Don't sit in front of the TV for more than two hours a day. Get at least eight hours of sleep every day.</div>
+            <button class="audio-btn" onclick="speakText(`Exercise. Exercising is very important. It keeps your heart healthy and you don't get sick easily! Exercise for at least one hour every day. Don't sit in front of the TV for more than two hours a day. Get at least eight hours of sleep every day.`)">🔊 Listen</button>
+        </div>
+
+        <div class="reading-block">
+            <div class="reading-title">🧼 Keep Clean</div>
+            <div class="reading-text">We should always be clean to stay healthy. Wash your hands before and after meals. Wash your hands after you cough or sneeze. Wash your hands after you use the bathroom. Brush your teeth after every meal. Take a shower every day.</div>
+            <button class="audio-btn" onclick="speakText(`Keep clean. We should always be clean to stay healthy. Wash your hands before and after meals. Wash your hands after you cough or sneeze. Wash your hands after you use the bathroom. Brush your teeth after every meal. Take a shower every day.`)">🔊 Listen</button>
+        </div>
+
+        <div class="reading-block">
+            <div class="reading-title">🔬 What are germs?</div>
+            <div class="reading-text">Germs are very small organisms. You can't see them but they are everywhere. They can make you sick!</div>
+            <button class="audio-btn" onclick="speakText(`What are germs? Germs are very small organisms. You can't see them but they are everywhere. They can make you sick!`)">🔊 Listen</button>
+        </div>
+
+        <div class="warning-box">
+            🧼 Remember! Always wash your hands with soap for twenty seconds.
+        </div>
+    </div>
+
+    <!-- 3. Section 3 Comprehension Questions -->
+    <div class="content-card">
+        <div class="section-banner">
+            <div class="banner-num">3</div>
+            <div class="banner-title">Read again and answer the questions</div>
+        </div>
+
+        <div id="textQuestions"></div>
+    </div>
+
+    <!-- 4. Interactive Quiz / Multiple Choice Section -->
+    <div class="content-card">
+        <div class="section-banner">
+            <div class="banner-num">4</div>
+            <div class="banner-title">Quick Comprehension Quiz</div>
+        </div>
+
+        <div id="mcqList"></div>
+    </div>
+
+    <!-- 5. Let's Chat Section -->
+    <div class="content-card">
+        <div class="section-banner">
+            <div class="banner-num">5</div>
+            <div class="banner-title">Let's Chat!</div>
+        </div>
+
+        <div class="chat-box">
+            <h4>💬 Reflection Questions</h4>
+            <p>How many glasses of water do you drink a day? How many hours do you sleep a day? Do you like eating desserts or healthy snacks? What else do you do to stay healthy?</p>
+            <textarea class="chat-textarea" id="chatInput" rows="3" placeholder="Type your answer here..." oninput="checkChat()"></textarea>
+        </div>
+    </div>
+
+    <!-- 6. Score & Certificate Section -->
+    <div class="cert-card">
+        <h2>Certificate of Completion</h2>
+        <p>Student: <span id="displayName" style="color: #fef08a; font-weight: 900;">Student</span></p>
+        <div class="score-display"><span id="scoreVal">0</span> / 20</div>
+        <p id="certMsg">Complete all sections to achieve your full mark (20/20)!</p>
+        <button class="print-btn" onclick="window.print()">🖨️ Print Result</button>
+    </div>
+</div>
+
+<script>
+    // 6 Vocabulary Items from Page 36
+    const vocabItems = [
+        { en: "germs", ar: "جراثيم" },
+        { en: "sneeze", ar: "يعطس" },
+        { en: "heart", ar: "قلب" },
+        { en: "soap", ar: "صابون" },
+        { en: "vitamins", ar: "فيتامينات" },
+        { en: "habit", ar: "عادة" }
+    ];
+
+    // Section 3 Questions
+    const textQuestionsData = [
+        { q: "1. What are three ways to stay healthy?", model: "Eat right, exercise, and keep clean." },
+        { q: "2. How many glasses of water should we drink every day?", model: "At least seven glasses of water." },
+        { q: "3. What should we do before and after meals?", model: "Wash our hands." },
+        { q: "4. How long should we wash our hands for?", model: "For twenty seconds." },
+        { q: "5. Why is exercising important to stay healthy?", model: "Because it keeps your heart healthy and you don't get sick easily." },
+        { q: "6. How many hours should we sleep every day?", model: "At least eight hours of sleep." }
+    ];
+
+    // Multiple Choice Quiz
+    const mcqQuestionsData = [
+        { q: "1. Vitamins keep your body _____.", opts: ["sick", "healthy", "tired"], ans: 1 },
+        { q: "2. We should drink at least _____ glasses of water every day.", opts: ["3", "5", "7"], ans: 2 },
+        { q: "3. Exercising keeps your _____ healthy.", opts: ["teeth", "heart", "hair"], ans: 1 },
+        { q: "4. Don't sit in front of the TV for more than _____ hours a day.", opts: ["2", "4", "6"], ans: 0 },
+        { q: "5. You should sleep for at least _____ hours every day.", opts: ["5", "6", "8"], ans: 2 },
+        { q: "6. Always wash your hands with soap for _____ seconds.", opts: ["10", "20", "30"], ans: 1 }
+    ];
+
+    let userScore = 0;
+    let answeredSet = new Set();
+
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = 'en-US';
+            speech.rate = 0.9;
+            window.speechSynthesis.speak(speech);
+        }
+    }
+
+    function renderVocab() {
+        const grid = document.getElementById('vocabGrid');
+        grid.innerHTML = vocabItems.map(v => `
+            <div class="vocab-card">
+                <div>
+                    <div class="vocab-en">${v.en}</div>
+                    <div class="vocab-ar">${v.ar}</div>
+                </div>
+                <button class="audio-btn" onclick="speakText('${v.en}')">🔊 Listen</button>
+            </div>
+        `).join('');
+    }
+
+    function renderTextQuestions() {
+        const container = document.getElementById('textQuestions');
+        container.innerHTML = textQuestionsData.map((item, idx) => `
+            <div class="q-item">
+                <div class="q-title">${item.q}</div>
+                <input type="text" class="q-input" placeholder="Type your answer here...">
+                <button class="ans-btn" onclick="showModelAns(${idx})">Check Answer</button>
+                <div class="model-ans" id="ans-box-${idx}">💡 Model Answer: ${item.model}</div>
+            </div>
+        `).join('');
+    }
+
+    function showModelAns(idx) {
+        document.getElementById(`ans-box-${idx}`).style.display = "block";
+        if (!answeredSet.has(`q-${idx}`)) {
+            answeredSet.add(`q-${idx}`);
+            userScore += 1.5; // Total 9 points for 6 questions
+            updateScoreDisplay();
+        }
+    }
+
+    function renderMCQ() {
+        const container = document.getElementById('mcqList');
+        container.innerHTML = mcqQuestionsData.map((item, idx) => `
+            <div class="q-item">
+                <div class="q-title">${item.q}</div>
+                <div class="mcq-options">
+                    ${item.opts.map((opt, oIdx) => `
+                        <button class="opt-btn" id="mcq-${idx}-opt-${oIdx}" onclick="checkMCQ(${idx}, ${oIdx})">${opt}</button>
+                    `).join('')}
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function checkMCQ(qIdx, selectedOpt) {
+        const q = mcqQuestionsData[qIdx];
+        const correctOpt = q.ans;
+
+        q.opts.forEach((_, oIdx) => {
+            const btn = document.getElementById(`mcq-${qIdx}-opt-${oIdx}`);
+            btn.disabled = true;
+            if (oIdx === correctOpt) {
+                btn.classList.add('correct-val');
+            } else if (oIdx === selectedOpt) {
+                btn.classList.add('incorrect-val');
+            }
+        });
+
+        if (selectedOpt === correctOpt && !answeredSet.has(`mcq-${qIdx}`)) {
+            answeredSet.add(`mcq-${qIdx}`);
+            userScore += 1.5; // Total 9 points for 6 questions
+            updateScoreDisplay();
+        }
+    }
+
+    function checkChat() {
+        const val = document.getElementById('chatInput').value.trim();
+        if (val.length > 5 && !answeredSet.has('chat')) {
+            answeredSet.add('chat');
+            userScore += 2; // 2 Points for Reflection
+            updateScoreDisplay();
+        }
+    }
+
+    function updateScoreDisplay() {
+        const finalScore = Math.min(20, Math.round(userScore));
+        document.getElementById('scoreVal').innerText = finalScore;
+        const name = document.getElementById('studentName').value || 'Student';
+        if (finalScore >= 20) {
+            document.getElementById('certMsg').innerText = `Outstanding Job, ${name}! You achieved the full score (20/20)!`;
+        }
+    }
+
+    function updateStudentName() {
+        const val = document.getElementById('studentName').value;
+        document.getElementById('displayName').innerText = val.trim() !== '' ? val : 'Student';
+    }
+
+    window.onload = function() {
+        renderVocab();
+        renderTextQuestions();
+        renderMCQ();
+    };
+</script>
+
+</body>
+</html>
